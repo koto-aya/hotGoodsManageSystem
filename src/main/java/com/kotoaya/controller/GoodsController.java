@@ -9,14 +9,15 @@ import com.kotoaya.entity.Goods;
 import com.kotoaya.entity.vo.GoodsVo;
 import com.kotoaya.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/goods")
+@RequestMapping(value = "/goods")
 @CrossOrigin
 public class GoodsController {
     @Autowired
@@ -49,22 +50,17 @@ public class GoodsController {
      * @author wzw
      * @param current 当前页
      * @param limit 每页记录数
-     * @param token 用户登录凭证
      * @param goodsVo 查询条件
      */
     @PostMapping("/list")
-    public Result<List<Goods>> getGoodsList(@RequestParam Integer current,
+    public Result<Map<String,Object>> getGoodsList(@RequestParam Integer current,
                                             @RequestParam Integer limit,
-                                            @RequestParam(required = false) String token,
                                             @RequestBody GoodsVo goodsVo){
-        ParameterVerificationUtil.checkMultiParam(current,limit,token,goodsVo);
-        String username = jwtUtil.getUsernameFromToken(token);
-        if (!StringUtils.hasLength(username)){
-            throw new CustomException(ResultEnum.USER_IS_NOT_LOGIN);
+        ParameterVerificationUtil.checkMultiParam(current,limit,goodsVo);
+        if (!ObjectUtils.isEmpty(goodsVo.getIsHot()) && goodsVo.getIsHot()==126){
+            goodsVo.setIsHot(null);
         }
-        //计算偏移量
-        int offset=(current-1)*limit;
-        List<Goods> allGoods = goodsService.findAllGoods(limit, offset,goodsVo);
+        Map<String, Object> allGoods = goodsService.findAllGoods(limit, current, goodsVo);
         return Result.ok(allGoods);
     }
 
@@ -78,5 +74,30 @@ public class GoodsController {
         ParameterVerificationUtil.checkMultiParam(gno,isHot);
         Boolean success = goodsService.updateGoodsHot(gno, isHot);
         return success?Result.ok():Result.fail();
+    }
+
+    /**
+     * @author wzw
+     * @param gno 商品编号
+     * 删除商品
+     */
+    @DeleteMapping("/delete")
+    public Result<?> deleteByGno(@RequestParam String gno){
+        ParameterVerificationUtil.checkStringIsNull(gno);
+        boolean res = goodsService.deleteGoods(gno);
+        return res?Result.ok():Result.fail();
+    }
+
+    /**
+     * @author wzw
+     * 修改商品信息
+     */
+    @PutMapping("/update")
+    public Result updateGoods(@RequestBody Goods goods){
+        if (StringUtils.hasLength(goods.getGoodsImg())){
+            //TODO 删除旧的图片
+        }
+        Boolean update = goodsService.updateGoods(goods);
+        return update?Result.ok():Result.fail();
     }
 }

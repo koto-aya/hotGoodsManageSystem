@@ -1,6 +1,7 @@
 package com.kotoaya.service.impl;
 
 import com.kotoaya.common.CustomException;
+import com.kotoaya.common.Result;
 import com.kotoaya.common.ResultEnum;
 import com.kotoaya.common.utils.JWTUtil;
 import com.kotoaya.common.utils.MD5Util;
@@ -10,6 +11,9 @@ import com.kotoaya.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,6 +34,7 @@ public class AdminServiceImpl implements AdminService {
     public boolean addAdmin(Administrator administrator) {
         String adminName = administrator.getAdminName();
         String passwd = administrator.getPasswd();
+        String avatarPath= administrator.getAvatarPath();
         if(!StringUtils.hasLength(adminName)||!StringUtils.hasLength(passwd)){
             throw new CustomException(ResultEnum.USERNAME_OR_PASSWORD_IS_NOT);
         }
@@ -38,7 +43,7 @@ public class AdminServiceImpl implements AdminService {
             throw new CustomException(ResultEnum.REGISTERED);
         }
         passwd= MD5Util.string2MD5(passwd);//密码加密
-        int isSuccess = adminMapper.register(adminName, passwd);
+        int isSuccess = adminMapper.register(adminName, passwd,avatarPath);
         return isSuccess>0;
     }
 
@@ -77,17 +82,25 @@ public class AdminServiceImpl implements AdminService {
      */
     @Override
     public Map<String, Object> getInfo(String token) {
-        if (jwtUtil.getExpiration()>=System.currentTimeMillis()) {
+        String username = jwtUtil.getUsernameFromToken(token);
+        if (!StringUtils.hasLength(username)){
             throw new CustomException(ResultEnum.USER_IS_NOT_LOGIN);
         }
-        String username = jwtUtil.getUsernameFromToken(token);
+        //根据用户名查询用户信息
+        Administrator adminByName = getAdminByName(username);
         Long expiration = jwtUtil.getExpiration();
         String secret = jwtUtil.getSECRET();
         Map<String,Object> result=new HashMap<>();
-        result.put("username",username);
+        result.put("username",adminByName.getAdminName());
+        result.put("avatarPath",adminByName.getAvatarPath());
         result.put("expiration",expiration);
         result.put("secret",secret);
         return result;
+    }
+
+    @Override
+    public Administrator getAdminByName(String adminName) {
+        return adminMapper.getOneByName(adminName);
     }
 
     /**

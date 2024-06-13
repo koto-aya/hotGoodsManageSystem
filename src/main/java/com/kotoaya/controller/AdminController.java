@@ -15,7 +15,7 @@ import java.util.Map;
 
 /**
  * @author wzw
- * 管理员控制层
+ * 管理员模块
  */
 @RestController
 @RequestMapping("/admin")
@@ -47,5 +47,14 @@ public class AdminController {
         ParameterVerificationUtil.checkStringIsNull(token);
         Map<String, Object> info = adminService.getInfo(token);
         return Result.ok(info);
+    }
+
+    /**
+     * @author wzw
+     * 用户退出登录
+     */
+    @PostMapping("/logout")
+    public Result logout(@RequestBody String token){
+        return Result.ok();
     }
 }

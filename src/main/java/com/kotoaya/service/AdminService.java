@@ -11,4 +11,5 @@ public interface AdminService {
     public Map<String,Object> login(Administrator administrator);
 
     public Map<String,Object> getInfo(String token);
+    public Administrator getAdminByName(String adminName);
 }

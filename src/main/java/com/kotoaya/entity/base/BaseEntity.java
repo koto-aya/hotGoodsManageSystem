@@ -11,5 +11,5 @@ public abstract class BaseEntity implements Serializable {
     protected Integer id;
     protected Timestamp createTime;
     protected Timestamp updateTime;
-    protected Boolean isDeleted;
+    protected Integer isDeleted;
 }

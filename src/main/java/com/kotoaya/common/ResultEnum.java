@@ -14,8 +14,8 @@ public enum ResultEnum {
     LOGIN_FAIL(303,"用户名或密码错误"),
     GOODS_IS_NOT_EXIST(304,"商品不存在"),
     INCOMPLETE_GOODS_INFO(305,"商品信息不完整"),
-    USER_IS_NOT_LOGIN(306,"用户未登录");
+    USER_IS_NOT_LOGIN(306,"用户未登录"),
+    FILE_NOT_EXIST(307,"文件不存在");
     private final Integer code;
     private final String message;
-
 }

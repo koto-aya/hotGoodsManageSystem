@@ -18,6 +18,10 @@
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
     </bean>
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSizePerFile" value="#{10*1024*1024}"/>
+        <property name="maxUploadSize" value="#{100*1024*1024}"/>
+    </bean>
     <!--        配置SqlSession工厂-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="datasource"></property>
@@ -37,4 +41,6 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
+    <mvc:resources mapping="/img/**" location="classpath:/img/"></mvc:resources>
+    <mvc:default-servlet-handler/>
 </beans>

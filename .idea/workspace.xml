@@ -9,38 +9,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef9ab907-e10a-4cf4-87fa-58f84fdf2adb" name="Changes" comment="项目创建">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/common/CustomException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/common/GlobalException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/common/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/common/ResultEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/common/utils/JWTUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/common/utils/MD5Util.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/common/utils/ParameterVerificationUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/controller/AdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/controller/GoodsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/controller/TestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/entity/Administrator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/entity/Goods.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/entity/base/BaseEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/entity/vo/GoodsVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/mapper/AdminMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/mapper/GoodsMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/service/AdminService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/service/GoodsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/service/impl/AdminServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/service/impl/GoodsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/springMVC.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/kotoaya/test/Test01.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="ef9ab907-e10a-4cf4-87fa-58f84fdf2adb" name="Changes" comment="完成了管理员模块和部分商品管理模块的功能">
+      <change afterPath="$PROJECT_DIR$/bookManage.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/controller/CommonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kotoaya/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kotoaya/common/ResultEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/common/ResultEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kotoaya/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kotoaya/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/controller/GoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kotoaya/entity/Administrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/entity/Administrator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kotoaya/entity/Goods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/entity/Goods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kotoaya/entity/base/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/entity/base/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kotoaya/mapper/AdminMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/mapper/AdminMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kotoaya/mapper/GoodsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/mapper/GoodsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kotoaya/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kotoaya/service/GoodsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/service/GoodsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kotoaya/service/impl/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/service/impl/AdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kotoaya/service/impl/GoodsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kotoaya/service/impl/GoodsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/springMVC.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/springMVC.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,16 +77,17 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/project/热门商品管理系统/hotGoodsManageSystem&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kotoaya/Desktop/Test&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;566d0f5f8c30457b2bd81a281bfe8af8&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\project\热门商品管理系统\hotGoodsManageSystem" />
       <recent name="D:\project\koto-generate\hotGoodsManageSystem\src\main\webapp\WEB-INF" />
       <recent name="D:\project\koto-generate\hotGoodsManageSystem\src\main\webapp" />
     </key>
@@ -229,7 +218,26 @@
       <workItem from="1717649835122" duration="10816000" />
       <workItem from="1717670020882" duration="2821000" />
       <workItem from="1717727165492" duration="4224000" />
-      <workItem from="1717759285470" duration="11817000" />
+      <workItem from="1717759285470" duration="12457000" />
+      <workItem from="1717831723349" duration="4749000" />
+      <workItem from="1718014776396" duration="2491000" />
+      <workItem from="1718065950722" duration="2118000" />
+      <workItem from="1718103621051" duration="193000" />
+      <workItem from="1718171825813" duration="305000" />
+      <workItem from="1718181232725" duration="3679000" />
+      <workItem from="1718191420334" duration="800000" />
+      <workItem from="1718192443555" duration="1116000" />
+      <workItem from="1718194114246" duration="22000" />
+      <workItem from="1718197574076" duration="322000" />
+      <workItem from="1718198331667" duration="378000" />
+      <workItem from="1718245612415" duration="24000" />
+      <workItem from="1718252454827" duration="663000" />
+      <workItem from="1718254691297" duration="98000" />
+      <workItem from="1718255238800" duration="8000" />
+      <workItem from="1718257829190" duration="6591000" />
+      <workItem from="1718266858048" duration="2717000" />
+      <workItem from="1718269898243" duration="18000" />
+      <workItem from="1718279067099" duration="1826000" />
     </task>
     <task id="LOCAL-00001" summary="项目创建">
       <created>1717575665696</created>
@@ -238,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717575665696</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="完成了管理员模块和部分商品管理模块的功能">
+      <created>1717774247994</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717774247994</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,6 +272,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="项目创建" />
-    <option name="LAST_COMMIT_MESSAGE" value="项目创建" />
+    <MESSAGE value="完成了管理员模块和部分商品管理模块的功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成了管理员模块和部分商品管理模块的功能" />
   </component>
 </project>

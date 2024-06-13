@@ -15,4 +15,5 @@ import java.sql.Timestamp;
 public class Administrator extends BaseEntity {
     private String adminName;
     private String passwd;
+    private String avatarPath;
 }

@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -77,9 +79,20 @@ public class GoodsServiceImpl implements GoodsService {
      * 获取所有商品信息
      */
     @Override
-    public List<Goods> findAllGoods(int limit, int offset, GoodsVo goodsVo) {
-        List<Goods> allGoods = goodsMapper.getAllGoods(limit,offset,goodsVo);
-        return allGoods;
+    public Map<String,Object> findAllGoods(int limit, int current, GoodsVo goodsVo) {
+        //计算偏移量
+        int offset=(current-1)*limit;
+        List<Goods> allGoods = goodsMapper.getAllGoods(limit,offset,goodsVo);//获取记录
+        int recordsTotal = getRecordsTotal();//获取 总记录数
+        //获取总页数
+        int pageSize= recordsTotal<limit?1:(int) Math.floor(recordsTotal/limit);
+        Map<String,Object> result=new HashMap<>();
+        result.put("data",allGoods);
+        result.put("current",current);
+        result.put("limit",limit);
+        result.put("recordsSize",recordsTotal);
+        result.put("pageSize",pageSize);
+        return result;
     }
 
     /**
@@ -93,6 +106,36 @@ public class GoodsServiceImpl implements GoodsService {
             throw new CustomException(ResultEnum.GOODS_IS_NOT_EXIST);
         }
         int res = goodsMapper.setHot(gno, isHot);
+        return res>0;
+    }
+
+    /**
+     * @author wzw
+     * @return 总记录数
+     */
+    @Override
+    public int getRecordsTotal() {
+        int total = goodsMapper.getTotal();
+        return total;
+    }
+
+    /**
+     * @author wzw
+     * @param gno 商品编号
+     * 根据商品编号删除商品
+     */
+    @Override
+    public boolean deleteGoods(String gno) {
+        //查询商品是否存在
+        Goods goodsByGno = goodsMapper.getGoodsByGno(gno);
+        if (ObjectUtils.isEmpty(goodsByGno)){
+            throw new CustomException(ResultEnum.GOODS_IS_NOT_EXIST);
+        }
+        //商品是否已被删除
+        if (goodsByGno.getIsDeleted()==1) {
+            return true;
+        }
+        int res = goodsMapper.deleteOne(gno);
         return res>0;
     }
 
